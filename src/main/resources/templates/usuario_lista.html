@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="utf-8" >
+        <title>DemoDeploy</title>
+    </head>
+
+    <body>
+   
+
+        <div class="container m-5" >
+
+            <table class="table table-dark">
+                <thead class="align-items-center">
+                    <tr >
+                        <th scope="col">Id del Usuario</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Modificar</th>
+
+                    </tr>
+                </thead>
+                <tbody th:each="usuario : ${usuarios}"> 
+                    <tr>
+                        <th scope="row" th:text="${usuario.id}"></th>
+                        <td th:text="${usuario.nombre}"></td>
+                        
+                       
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+            
+
+        </div>
+
+      
+
+        <!-- JavaScript Bundle with Popper -->
+        
+    </body>
+
+</html>
