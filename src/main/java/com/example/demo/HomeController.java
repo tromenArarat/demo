@@ -62,10 +62,10 @@ public class HomeController {
         return "registroe.html";
     }
     @PostMapping("/registroe")
-    public String registroe(@RequestParam String observacion) {
+    public String registroe(@RequestParam String nombre) {
 
         try {
-           observacionServicio.crearObservacion(observacion);
+           observacionServicio.crearObservacion(nombre);
          
         } catch (Exception e) {
 
