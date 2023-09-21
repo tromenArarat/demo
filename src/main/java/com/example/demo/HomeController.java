@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class HomeController {
     
-    @Autowired
+        @Autowired
         private UsuarioServicio usuarioServicio;
-    @Autowired
+        @Autowired
         private ObservacionServicio observacionServicio;
     
     @GetMapping("/")

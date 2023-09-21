@@ -27,9 +27,7 @@ public class ObservacionServicio {
         
     }
 
-
-    
-    public List<Observacion> listarEditoriales() {
+    public List<Observacion> listarObservaciones() {
 
         List<Observacion> observaciones = new ArrayList();
 
