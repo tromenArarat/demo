@@ -5,6 +5,7 @@
 package com.example.demo;
 
 import com.example.demo.servicios.UsuarioServicio;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,10 +33,17 @@ public class HomeController {
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre) {
 
+        try {
            usuarioServicio.registrar(nombre);
-          
+            
+         
+        } catch (Exception ex) {
+
+            return "registro.html";
+        }
         return "index.html";
     }
+    
     @GetMapping("/usuarios")
     public String usuarios(){
         return "usuario_lista.html";
