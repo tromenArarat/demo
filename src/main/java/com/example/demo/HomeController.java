@@ -4,11 +4,14 @@
 
 package com.example.demo;
 
+import com.example.demo.entidades.Observacion;
+import com.example.demo.entidades.Usuario;
 import com.example.demo.servicios.ObservacionServicio;
 import com.example.demo.servicios.UsuarioServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +50,9 @@ public class HomeController {
     }
     
     @GetMapping("/usuarios")
-    public String usuarios(){
+    public String usuarios(ModelMap modelo){
+        List<Usuario> usuarios = usuarioServicio.listarUsuarios();
+        modelo.addAttribute("usuarios", usuarios);
         return "usuario_lista.html";
     }
     
@@ -57,10 +62,10 @@ public class HomeController {
         return "registroe.html";
     }
     @PostMapping("/registroe")
-    public String registroe(@RequestParam String nombre) {
+    public String registroe(@RequestParam String observacion) {
 
         try {
-           observacionServicio.crearObservacion(nombre);
+           observacionServicio.crearObservacion(observacion);
          
         } catch (Exception e) {
 
@@ -70,7 +75,9 @@ public class HomeController {
     }
     
     @GetMapping("/observaciones")
-    public String observaciones(){
+    public String observaciones(ModelMap modelo){
+        List<Observacion> observaciones = observacionServicio.listarObservaciones();
+        modelo.addAttribute("observaciones", observaciones);
         return "observaciones.html";
     }
 }

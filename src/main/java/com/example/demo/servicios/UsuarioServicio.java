@@ -1,44 +1,5 @@
 /*
 
-public class UsuarioServicio implements UserDetailsService{
-    @Autowired
-    private UsuarioRepositorio usuarioRepositorio;
-
-@Transactional
-    public void registrar(MultipartFile archivo, String nombre, String email, String password, String password2) throws MiException {
-
-        validar(nombre, email, password, password2);
-
-        Usuario usuario = new Usuario();
-
-        
-        usuario.setEmail(email);
-
-        usuario.setPassword(new BCryptPasswordEncoder().encode(password));
-        
-        usuario.setRol(Rol.USER);
-        
-        Imagen imagen = imagenServicio.guardar(archivo);
-        
-        usuario.setImagen(imagen);
-        
-        usuarioRepositorio.save(usuario);
-    }
-
-public Usuario getOne(String id){
-        return usuarioRepositorio.getOne(id);
-    }
-
-@Transactional(readOnly=true)
-    public List<Usuario> listarUsuarios() {
-
-        List<Usuario> usuarios = new ArrayList();
-
-        usuarios = usuarioRepositorio.findAll();
-
-        return usuarios;
-    }
-
  */
 
 package com.example.demo.servicios;
@@ -58,13 +19,12 @@ public class UsuarioServicio{
 
     
     @Transactional
-    public void registrar(String nombre){
+    public void registrar(String nombre) throws Exception{
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
         usuarioRepositorio.save(usuario);
     }
     
-    @Transactional
     public List<Usuario> listarUsuarios() {
 
         List<Usuario> usuarios = new ArrayList();
