@@ -4,6 +4,7 @@
 
 package com.example.demo;
 
+import com.example.demo.servicios.ObservacionServicio;
 import com.example.demo.servicios.UsuarioServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class HomeController {
     
     @Autowired
         private UsuarioServicio usuarioServicio;
+    @Autowired
+        private ObservacionServicio observacionServicio;
     
     @GetMapping("/")
     public String index(){
@@ -35,9 +38,8 @@ public class HomeController {
 
         try {
            usuarioServicio.registrar(nombre);
-            
          
-        } catch (Exception ex) {
+        } catch (Exception e) {
 
             return "registro.html";
         }
@@ -47,5 +49,28 @@ public class HomeController {
     @GetMapping("/usuarios")
     public String usuarios(){
         return "usuario_lista.html";
+    }
+    
+    
+    @GetMapping("/registrare")
+    public String registrare(){
+        return "registroe.html";
+    }
+    @PostMapping("/registroe")
+    public String registroe(@RequestParam String nombre) {
+
+        try {
+           observacionServicio.crearObservacion(nombre);
+         
+        } catch (Exception e) {
+
+            return "registroe.html";
+        }
+        return "index.html";
+    }
+    
+    @GetMapping("/observaciones")
+    public String observaciones(){
+        return "observaciones.html";
     }
 }
