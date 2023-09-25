@@ -38,8 +38,9 @@ public class HomeController {
     }
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre) {
-
+console.log("antes del try");
         try {
+            console.log("antes del servicio");
            usuarioServicio.registrar(nombre);
          
         } catch (Exception e) {
